@@ -60,6 +60,10 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+        opacity: 0;
+       transition: opacity 400ms ease-in-out;
+       -moz-transition: opacity 400ms ease-in-out;
+       -webkit-transition: opacity 400ms ease-in-out;
 		/*background-color: #981089;*/
 	}
 
@@ -184,6 +188,10 @@
         align-items: center;
         flex-direction: row;
         flex-wrap: wrap;
+        opacity: 0;
+       transition: opacity 1s ease-in-out;
+       -moz-transition: opacity 1s ease-in-out;
+       -webkit-transition: opacity 1s ease-in-out;
     }
 
     #names > p {
@@ -236,6 +244,10 @@
 
     #other-names {
         display: none;
+    }
+
+    .show{
+       opacity: 1 !important;
     }
 
     @media only screen and (max-width: 1000px) and (orientation:landscape) {
@@ -425,6 +437,8 @@
 	filledInPixels = filledInPixels || 0;
 	 console.log(filledInPixels + '%');
 	if (filledInPixels > 65) {
+	  $("#top-header").addClass('show');
+	  $("#names").addClass('show');
 	  removeFadeOut(canvas, 500);
 	}
   }
