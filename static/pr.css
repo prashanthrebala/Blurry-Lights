@@ -1,0 +1,9 @@
+@font-face {
+    font-family: topfont;
+    src: url('./topfont.ttf');
+}
+
+@font-face {
+    font-family: chs;
+    src: url('./lt.otf');
+}
