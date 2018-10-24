@@ -95,6 +95,7 @@
 		position: absolute;
 		top: 0;
 		z-index: 1;
+        display: none;
 	}
 
 	#blurry-lights {
@@ -213,6 +214,7 @@
 <head>
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="content">
@@ -372,6 +374,8 @@
   function handleMouseUp(e) {
 	isDrawing = false;
   }
+
+  $('.canvas').ready(function(){$("#hhh").css("display", "block");})
 
 })();
 </script>
