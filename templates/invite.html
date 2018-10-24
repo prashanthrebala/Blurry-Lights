@@ -70,6 +70,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+        flex-direction: column;
 	}
 
 	.container {
@@ -96,6 +97,9 @@
 		top: 0;
 		z-index: 1;
         display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 	}
 
 	#blurry-lights {
@@ -141,7 +145,7 @@
 	}
 
 	#attendee {
-		font-size: 48px;
+		font-size: 3em;
 	}
 
 	#sya {
@@ -162,6 +166,7 @@
         width: 100%;
     }
 
+    /*
     #names > div {
         font-size: 24px;
         height: 50%;
@@ -170,6 +175,33 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
+    }
+    */
+
+    #names {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #names > p {
+        margin: 0.2em 0.5em;
+        font-size: 1.8em;
+    }
+
+    #other-names {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #other-names > p {
+        margin: 0.2em 0.5em;
+        font-size: 1.8em;
     }
 
     .upar {
@@ -188,6 +220,24 @@
         align-items: center;
     }
 
+    #info > p {
+        text-align: center;
+        font-size: 1.2em;
+        margin: 0 auto;
+    }
+
+    #name {
+        font-size: 2.5em !important;
+    }
+
+    #venue {
+        font-size: 1.5em !important;
+    }
+
+    #other-names {
+        display: none;
+    }
+
     @media only screen and (max-width: 1000px) and (orientation:landscape) {
 
         #border-div {
@@ -196,23 +246,40 @@
 
         #top-header, #bottom {
             height: 100%;
-            width: 50%
+            width: 50%;
         }
 
         #blurry-lights {
-            height: 60%;
+            height: unset;
+        }
+
+        #blurry-lights > div {
+            position: static;
         }
 
         #caption {
-            height: 40%;
+            height: unset;
             align-items: flex-start;
+            margin-top: 0.5em;
+            margin-bottom: 10vh;
+        }
+
+        #names {
+            display: none;
+        }
+
+        #other-names {
+            display: flex;
+            font-size: 0.75em;
+            padding: 1.8em;
+            margin-bottom: -10vh;
         }
 
     }
 
 </style>
 <head>
-	<title></title>
+	<title> Blurry Nights</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -221,8 +288,16 @@
 	<div id="border-div">
 			<!-- <div id="a"> One or no cheesy line here </div> -->
 		<div id="top-header" class="afghan">
-			<div id="blurry-lights"><div>Blurry Lights</div></div>
+            <div id="blurry-lights"><div>Blurry Lights</div></div>
 			<div id="caption"> Time isnt wasted when you are </div>
+
+            <div id="other-names" class="chs">
+                <p> Varun </p>
+                <p> Shaleen </p>
+                <p> Prerna </p>
+                <p> Prashanth </p>
+                <p> Sidharth </p>
+            </div>
 		</div>
 		<div id="bottom">
 			<div class="container" id="js-container">
@@ -230,11 +305,12 @@
 					<canvas class="canvas" id="js-canvas" width="300" height="300"></canvas>
 				</div>
 				<div id="hhh">
-					<div id="info" class="chs">
-						<div id="attendee" style="height: 35%; ">{{ name }}</div>
-						<div id="sya" style="height: 10%;"> see you on </div>
-						<div id="date" style="height: 27%;"> 31st October, 8pm </div>
-						<div id="venue" style="height: 27%;">Blue Waters, Manipal </div>
+					<!--
+                    <div id="info" class="chs">
+						<p id="name" style="height: 35%; ">{{ name }}</p>
+						<p id="sya" style="height: 10%;"> see you on </p>
+						<p id="date" style="height: 27%;"> 31st October, 8pm </p>
+						<p id="venue" style="height: 27%;">Blue Waters, Manipal </p>
 					</div>
 					<div id="names" class="chs">
 						<div>
@@ -246,9 +322,26 @@
 							<div class="neeche">Prashanth</div>
 							<div class="neeche">Sidharth</div>
 						</div>
-					</div>
+					</div>-->
+
+                    <div id="info" class="chs">
+                        <p id="name"> {{ name }}</p>
+                        <p> See you on <p>
+                        <p id="venue"> Wednesday <br/> 31st October, 8pm <br/> Blue Waters Manipal </p>
+                    </div>
+
+
+
 				</div>
 			</div>
+
+            <div id="names" class="chs">
+                <p> Varun </p>
+                <p> Shaleen </p>
+                <p> Prerna </p>
+                <p> Prashanth </p>
+                <p> Sidharth </p>
+            </div>
 	   </div>
 	</div>
 </div>
@@ -375,7 +468,7 @@
 	isDrawing = false;
   }
 
-  $('.canvas').ready(function(){$("#hhh").css("display", "block");})
+  $('.canvas').ready(function(){$("#hhh").css("display", "flex");})
 
 })();
 </script>
